@@ -5,6 +5,12 @@ from parallel_ode_solver_example import solveodepar
 
 # # # Global parameters # # #
 
+# Plot results for testing/demonstration purposes. This reduces the sampling density since matplotlib cannot handle
+# possibly billions of points and reduces the required runtime.
+# If set to 1 note that the results are not theoretically justified, but no difference in the plot is observable
+# due to the limited plot resolution. Please use this feature carefully and only for quick testing/demonstration!
+DO_PLOT = 1
+
 # Kernel selection (select the kernel used in the Gaussian Process):
 KERNEL = "ardmatern32"
 # KERNEL = "ardmatern52"
@@ -55,12 +61,14 @@ def main_run():
         print("\nRefinement iteration: ", refinementiterations + 1)
         print("Analytic grid x-range: [%d, %d], y-range: [%d, %d] and grid constant b: %e"
               % (xmin, xmax, ymin, ymax, intervalwidth))
-        # CORRECT WAY:
-        # gridx = numpy.arange(xmin, xmax, intervalwidth * 2).astype(numpy.float64)  # division of both axes into
-        # gridy = numpy.arange(ymin, ymax, intervalwidth * 2).astype(numpy.float64)  # intervals with the size 2b
-        # ONLY FOR QUICK TEST USE (AND WITHOUT REFINEMENT):
-        gridx = numpy.arange(xmin, xmax, intervalwidth * 20000).astype(numpy.float64)  # division of both axes into
-        gridy = numpy.arange(ymin, ymax, intervalwidth * 20000).astype(numpy.float64)  # intervals with the size 2b
+        if DO_PLOT == 0:
+            gridx = numpy.arange(xmin, xmax, intervalwidth * 2).astype(numpy.float64)  # division of both axes into
+            gridy = numpy.arange(ymin, ymax, intervalwidth * 2).astype(numpy.float64)  # intervals with the size 2b
+        elif DO_PLOT == 1:
+            # ONLY FOR QUICK TEST USE (AND WITHOUT REFINEMENT):
+            reduced_density = 0.01/intervalwidth  # only 100 points per axis unit BUT same b (theoretically unjustified!)
+            gridx = numpy.arange(xmin, xmax, intervalwidth * reduced_density).astype(numpy.float64)  # division of both axes into
+            gridy = numpy.arange(ymin, ymax, intervalwidth * reduced_density).astype(numpy.float64)  # intervals with the size 2b
         print("Resulting grid size:", (gridx.shape[0], gridy.shape[0]))
 
         if refinementiterations == 0:
