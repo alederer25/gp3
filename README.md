@@ -4,6 +4,8 @@ This code accompanies the  work "GP3: A Sampling-based Analysis Framework for Ga
 ## Overview of Python scripts:
 
 #### General (reusable, non-problem specific) GPU calculation scripts:
+See the function headers inside the specific scripts for detailed information about required inputs and returns of each function.
+
 - **SquaredExp_GPU.py**: GPU parallelized functions to evaluate the decrease condition of a given Gaussian Process (GP) mean function trained on a cost function of a dynamical system with the squared exponential kernel.
   
   Based on the decrease region and GP mean additionally estimate the region of attraction of the system. 
@@ -14,7 +16,7 @@ This code accompanies the  work "GP3: A Sampling-based Analysis Framework for Ga
   
   Based on the decrease region and GP mean additionally estimate the region of attraction of the system. 
  
- See the function headers inside the specific scripts for detailed information about required inputs and returns of each function.
+ 
    
 #### Example demonstration scripts (problem specific):
 - **main_example.py**: This is the main function for running the example shown in the publication mentioned at the top. Import data from the from the 'MA32bus_example.npz' file, which is used to store the GP trained on a cost function for the example system. Calculate the decrease region and region of attraction using the general scripts listed above.
