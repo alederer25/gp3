@@ -4,13 +4,13 @@ This code accompanies the  work "GP3: A Sampling-based Analysis Framework for Ga
 ## Overview of Python scripts:
 
 #### General (reusable, non-problem specific) GPU calculation scripts:
-- **SquaredExp_GPU.py**: GPU parallelized functions to evaluate the decrease condition of the given Gaussian Process (GP) mean function trained on a cost function of a dynamical system with the squared exponential kernel.
+- **SquaredExp_GPU.py**: GPU parallelized functions to evaluate the decrease condition of a given Gaussian Process (GP) mean function trained on a cost function of a dynamical system with the squared exponential kernel.
   
   Based on the decrease region and GP mean additionally estimate the region of attraction of the system. 
-- **Matern32.py**: GPU parallelized functions to evaluate the decrease condition of the given Gaussian Process (GP) mean function trained on a cost function of a dynamical system with the matern32 kernel.
+- **Matern32.py**: GPU parallelized functions to evaluate the decrease condition of a given Gaussian Process (GP) mean function trained on a cost function of a dynamical system with the matern32 kernel.
 
   Based on the decrease region and GP mean additionally estimate the region of attraction of the system. 
-- **Matern52.py**: GPU parallelized functions to evaluate the decrease condition of the given Gaussian Process (GP) mean function trained on a cost function of a dynamical system with the matern52 kernel.
+- **Matern52.py**: GPU parallelized functions to evaluate the decrease condition of a given Gaussian Process (GP) mean function trained on a cost function of a dynamical system with the matern52 kernel.
   
   Based on the decrease region and GP mean additionally estimate the region of attraction of the system. 
  
