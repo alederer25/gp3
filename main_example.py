@@ -34,7 +34,8 @@ bmin = numpy.float64(1e-06)     # this is the minimum size b. Upon reaching this
 refinementfactor = int(10)      # In each refinement iteration a square is divided into refinementfactor^2 subsquares
 
 epsilon = 0.01                      # threshold used to determine the decrease region of the cost function
-dynlipconstant = numpy.float64(20)  # fixed Lipschitz constant of the dynamics on the analyzed region
+dynlipconstant = numpy.float64(20)  # fixed conservative Lipschitz constant of the dynamics on the analyzed region (L_f in eq. 13 and 14 in the publication).
+                                    # Must be changed for any different dynamical system!
 
 
 def main_run():
@@ -65,8 +66,8 @@ def main_run():
             gridx = numpy.arange(xmin, xmax, intervalwidth * 2).astype(numpy.float64)  # division of both axes into
             gridy = numpy.arange(ymin, ymax, intervalwidth * 2).astype(numpy.float64)  # intervals with the size 2b
         elif DO_PLOT == 1:
-            # ONLY FOR QUICK TEST USE (AND WITHOUT REFINEMENT):
-            reduced_density = 0.01/intervalwidth  # only 100 points per axis unit BUT same b (theoretically unjustified!)
+            # ONLY FOR QUICK TEST USE (NOT THEORETICALLY JUSTIFIED AND WITHOUT REFINEMENT):
+            reduced_density = 0.01/intervalwidth  # only 100 points per axis unit BUT unchanged rectangle size b (theoretically unjustified!)
             gridx = numpy.arange(xmin, xmax, intervalwidth * reduced_density).astype(numpy.float64)  # division of both axes into
             gridy = numpy.arange(ymin, ymax, intervalwidth * reduced_density).astype(numpy.float64)  # intervals with the size 2b
         print("Resulting grid size:", (gridx.shape[0], gridy.shape[0]))
