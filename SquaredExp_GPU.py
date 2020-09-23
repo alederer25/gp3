@@ -15,7 +15,7 @@ def decrease_region(gridx, gridy, b, xnext, dynlipconst, drcondfulfilled, traind
         b: Grid constant; distance between two elements (interval centers) in gridx and gridy should be 2*b
         xnext (ndarray): Solutions of system ode at all grid points defined by gridx, gridy.
             Shape = (gridx.size, gridy.size, 2). xnext[:,:,0] contains states x_1; xnext[:,:,1] contains states x_2
-        dynlipconst (float64): Fixed Lipschitz constant of the system dynamics on the analyzed region
+        dynlipconst (float64): Fixed conservative Lipschitz constant of the dynamics on the analyzed region (L_f in eq. 13 and 14 in the publication).
         drcondfulfilled (ndarray of bool): Indicates indexes of the grid where decrease condition is already
             fulfilled (TRUE) when a refinement process is used. Otherwise supposed to be filled by zeros (FALSE).
             Shape = (gridx.size, gridy.size)
